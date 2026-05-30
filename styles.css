@@ -410,53 +410,6 @@ h1 {
   background: var(--gold);
 }
 
-.champion-chant {
-  margin: 18px 0 0;
-  border: 1px solid rgba(239, 255, 255, .22);
-  border-radius: 18px;
-  padding: clamp(16px, 2.4vw, 28px);
-  background: var(--glass);
-  backdrop-filter: blur(18px);
-  container-type: inline-size;
-  max-width: 1040px;
-}
-
-.champion-chant span,
-.champion-chant strong {
-  display: block;
-  font-weight: 1000;
-  line-height: .82;
-  letter-spacing: 0;
-  text-transform: uppercase;
-}
-
-.champion-chant span {
-  color: rgba(239, 255, 255, .84);
-  font-size: clamp(24px, 12cqw, 54px);
-}
-
-.champion-chant strong {
-  margin-top: 10px;
-  color: var(--gold);
-  font-size: clamp(30px, 11.6cqw, 62px);
-  white-space: nowrap;
-  text-shadow: 4px 4px 0 rgba(255, 79, 154, .9), -3px -3px 0 rgba(69, 255, 232, .78);
-}
-
-.no-break {
-  white-space: nowrap;
-}
-
-.champion-chant em {
-  display: block;
-  margin-top: 14px;
-  color: var(--lime);
-  font-style: normal;
-  font-size: clamp(14px, 4cqw, 19px);
-  font-weight: 800;
-  line-height: 1.15;
-}
-
 .dolphin {
   position: fixed;
   z-index: 1;
@@ -757,11 +710,4 @@ h1 {
     line-height: 1.35;
   }
 
-  .champion-chant {
-    padding: 14px;
-  }
-
-  .champion-chant strong {
-    font-size: clamp(28px, 11.2cqw, 48px);
-  }
 }
