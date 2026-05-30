@@ -3,6 +3,7 @@ const portal = document.querySelector('.video-portal');
 const videos = [...document.querySelectorAll('.portal-video')];
 const playButton = document.querySelector('[data-action="toggle-play"]');
 const soundButton = document.querySelector('[data-action="toggle-sound"]');
+const soundNudge = document.querySelector('[data-action="nudge-sound"]');
 const celebrateButton = document.querySelector('[data-action="celebrate"]');
 const photoCards = [...document.querySelectorAll('.photo-card')];
 const spotlight = document.querySelector('.spotlight');
@@ -14,6 +15,12 @@ let activeIndex = 0;
 let isPlaying = true;
 let soundEnabled = true;
 let sequenceTimer = 0;
+let soundFallbackHandled = false;
+let needsSoundNudge = false;
+
+function updateSoundNudge() {
+  soundNudge.hidden = !needsSoundNudge || soundEnabled;
+}
 
 function setPointerLight(event) {
   root.style.setProperty('--x', `${event.clientX}px`);
@@ -36,6 +43,19 @@ function showVideo(index) {
   });
 }
 
+function handleSoundFallback() {
+  if (soundFallbackHandled) return;
+  soundFallbackHandled = true;
+  soundEnabled = false;
+  needsSoundNudge = true;
+  soundButton.textContent = 'Sound on';
+  updateSoundNudge();
+  videos.forEach((fallbackVideo) => {
+    fallbackVideo.muted = true;
+    fallbackVideo.play().catch(() => {});
+  });
+}
+
 function scheduleNextVideo() {
   window.clearTimeout(sequenceTimer);
   const current = activeVideo();
@@ -54,14 +74,7 @@ function startVideos() {
   portal.classList.add('is-playing');
   playButton.textContent = 'Pause video';
   videos.forEach((video) => {
-    video.play().catch(() => {
-      soundEnabled = false;
-      soundButton.textContent = 'Sound on';
-      videos.forEach((fallbackVideo) => {
-        fallbackVideo.muted = true;
-        fallbackVideo.play().catch(() => {});
-      });
-    });
+    video.play().catch(handleSoundFallback);
   });
   scheduleNextVideo();
 }
@@ -76,13 +89,27 @@ function pauseVideos() {
 
 function toggleSound() {
   soundEnabled = !soundEnabled;
+  if (soundEnabled) {
+    needsSoundNudge = false;
+  }
   soundButton.textContent = soundEnabled ? 'Sound off' : 'Sound on';
+  updateSoundNudge();
   videos.forEach((video, index) => {
     video.muted = !soundEnabled || index !== activeIndex;
   });
   if (soundEnabled) {
     startVideos();
   }
+}
+
+function spawnSurfaceDolphin() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const dolphin = document.createElement('span');
+  dolphin.className = 'surface-dolphin';
+  dolphin.style.setProperty('--surface-x', `${18 + Math.random() * 64}vw`);
+  dolphin.style.setProperty('--surface-r', `${Math.random() > .5 ? 12 : -12}deg`);
+  document.body.append(dolphin);
+  dolphin.addEventListener('animationend', () => dolphin.remove(), { once: true });
 }
 
 function popBubbles(x = window.innerWidth / 2, y = window.innerHeight / 2, count = 16) {
@@ -187,6 +214,7 @@ playButton.addEventListener('click', () => {
 });
 
 soundButton.addEventListener('click', toggleSound);
+soundNudge.addEventListener('click', toggleSound);
 celebrateButton.addEventListener('click', (event) => celebrate(event.clientX, event.clientY));
 spotlightClose.addEventListener('click', closeSpotlight);
 spotlight.addEventListener('click', (event) => {
@@ -218,3 +246,5 @@ videos.forEach((video, index) => {
 photoCards.forEach(makeDraggable);
 showVideo(0);
 startVideos();
+updateSoundNudge();
+window.setInterval(spawnSurfaceDolphin, 9000);
