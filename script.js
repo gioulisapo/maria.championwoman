@@ -46,16 +46,16 @@ function buildSoundBalloon() {
       ease: 'sine.out',
     })
     .to(soundButton, {
-      scaleX: 1.82,
-      scaleY: 2.08,
+      scaleX: 1.55,
+      scaleY: 1.78,
       rotation: -1,
       borderRadius: '46% 54% 58% 42%',
       duration: .34,
       ease: 'power1.out',
     })
     .to(soundButton, {
-      scaleX: 2.35,
-      scaleY: 2.75,
+      scaleX: 1.86,
+      scaleY: 2.12,
       rotation: 1,
       borderRadius: '60% 40% 48% 52%',
       duration: .28,
@@ -193,29 +193,16 @@ function toggleSound() {
   }
 }
 
-function spawnSurfaceDolphin() {
+function spawnTravelingDolphin() {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  const dolphin = document.createElement('span');
-  const splash = document.createElement('span');
-  const surfaceX = `${18 + Math.random() * 64}vw`;
-  dolphin.className = 'surface-dolphin';
-  dolphin.innerHTML = `
-    <svg viewBox="0 0 260 130" aria-hidden="true" focusable="false">
-      <path class="dolphin-tail" d="M220 60 C246 36 254 28 260 21 C255 49 246 66 229 77 C248 90 255 104 259 124 C247 117 232 105 216 86 Z"></path>
-      <path class="dolphin-body" d="M17 78 C43 33 104 10 163 25 C194 33 220 50 236 72 C202 76 173 88 143 104 C99 128 49 117 17 78 Z"></path>
-      <path class="dolphin-belly" d="M47 82 C89 102 137 99 183 75 C151 111 91 125 47 82 Z"></path>
-      <path class="dolphin-fin" d="M124 56 C139 28 154 17 174 13 C164 36 151 50 130 65 Z"></path>
-      <path class="dolphin-flipper" d="M126 86 C143 97 155 111 162 127 C137 121 121 109 112 91 Z"></path>
-      <circle cx="66" cy="61" r="5"></circle>
-    </svg>
-  `;
-  splash.className = 'surface-splash';
-  dolphin.style.setProperty('--surface-x', surfaceX);
-  splash.style.setProperty('--surface-x', surfaceX);
-  dolphin.style.setProperty('--surface-r', `${Math.random() > .5 ? 12 : -12}deg`);
-  document.body.append(splash, dolphin);
+  const dolphin = document.createElement('img');
+  dolphin.className = 'traveling-dolphin';
+  dolphin.src = 'assets/cartoon-dolphin.svg';
+  dolphin.alt = '';
+  dolphin.style.setProperty('--travel-y', `${12 + Math.random() * 58}vh`);
+  dolphin.style.setProperty('--travel-duration', `${9 + Math.random() * 4}s`);
+  document.body.append(dolphin);
   dolphin.addEventListener('animationend', () => dolphin.remove(), { once: true });
-  splash.addEventListener('animationend', () => splash.remove(), { once: true });
 }
 
 function spawnAmbientBubbles() {
@@ -359,7 +346,7 @@ photoCards.forEach(makeDraggable);
 showVideo(0);
 startVideos();
 updateSoundNudge();
-window.setTimeout(spawnSurfaceDolphin, 1400);
-window.setInterval(spawnSurfaceDolphin, 7200);
+window.setTimeout(spawnTravelingDolphin, 1200);
+window.setInterval(spawnTravelingDolphin, 7600);
 window.setTimeout(spawnAmbientBubbles, 900);
 window.setInterval(spawnAmbientBubbles, 2600);

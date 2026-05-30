@@ -543,62 +543,16 @@ h1 {
   animation: confettiDrop 900ms ease-out forwards;
 }
 
-.surface-dolphin {
+.traveling-dolphin {
   position: fixed;
-  left: var(--surface-x);
-  bottom: -120px;
+  left: -340px;
+  top: var(--travel-y);
   z-index: 18;
-  width: clamp(190px, 22vw, 330px);
-  filter: drop-shadow(0 28px 34px rgba(0, 0, 0, .25)) drop-shadow(0 0 42px rgba(69, 255, 232, .5));
+  width: clamp(170px, 20vw, 310px);
+  height: auto;
+  filter: drop-shadow(0 24px 28px rgba(0, 0, 0, .28)) drop-shadow(0 0 42px rgba(69, 255, 232, .5));
   pointer-events: none;
-  transform: translateX(-50%) rotate(var(--surface-r));
-  animation: surfaceJump 4.1s cubic-bezier(.2, .82, .2, 1) forwards;
-}
-
-.surface-dolphin svg {
-  display: block;
-  width: 100%;
-  overflow: visible;
-}
-
-.dolphin-body,
-.dolphin-tail,
-.dolphin-fin,
-.dolphin-flipper {
-  fill: url("#dolphinPaint");
-}
-
-.surface-dolphin svg {
-  --dolphin-dark: #0d5984;
-}
-
-.dolphin-body,
-.dolphin-tail {
-  fill: #2fb7e4;
-}
-
-.dolphin-fin,
-.dolphin-flipper {
-  fill: #78eaff;
-}
-
-.dolphin-belly {
-  fill: rgba(239, 255, 255, .9);
-}
-
-.surface-splash {
-  position: fixed;
-  left: var(--surface-x);
-  bottom: 3vh;
-  z-index: 17;
-  width: clamp(150px, 22vw, 320px);
-  height: 44px;
-  border-radius: 999px;
-  border: 2px solid rgba(239, 255, 255, .68);
-  background: radial-gradient(ellipse at center, rgba(239, 255, 255, .4), transparent 72%);
-  pointer-events: none;
-  transform: translateX(-50%) scale(.42);
-  animation: surfaceSplash 3.8s ease-out forwards;
+  animation: dolphinTravel var(--travel-duration) linear forwards;
 }
 
 .spotlight {
@@ -693,40 +647,27 @@ h1 {
   }
 }
 
-@keyframes surfaceJump {
+@keyframes dolphinTravel {
   0% {
-    transform: translateX(-50%) translateY(0) rotate(var(--surface-r));
     opacity: 0;
+    transform: translateX(0) translateY(18px) rotate(-4deg);
   }
 
-  15% {
-    opacity: .92;
+  10%, 90% {
+    opacity: .95;
   }
 
-  48% {
-    transform: translateX(-50%) translateY(-48vh) rotate(calc(var(--surface-r) * -1));
+  35% {
+    transform: translateX(45vw) translateY(-28px) rotate(6deg);
+  }
+
+  68% {
+    transform: translateX(85vw) translateY(22px) rotate(-3deg);
   }
 
   100% {
-    transform: translateX(-50%) translateY(0) rotate(var(--surface-r));
+    transform: translateX(calc(100vw + 420px)) translateY(-10px) rotate(5deg);
     opacity: 0;
-  }
-}
-
-@keyframes surfaceSplash {
-  0%, 18% {
-    opacity: 0;
-    transform: translateX(-50%) scale(.32);
-  }
-
-  30%, 68% {
-    opacity: .9;
-    transform: translateX(-50%) scale(1);
-  }
-
-  100% {
-    opacity: 0;
-    transform: translateX(-50%) scale(1.35);
   }
 }
 
