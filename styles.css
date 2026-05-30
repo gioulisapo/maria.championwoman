@@ -693,14 +693,14 @@ h1 {
 
   46% {
     opacity: 1;
-    transform: scale(1.18);
-    box-shadow: 0 0 0 18px rgba(255, 212, 71, 0), 0 0 78px rgba(255, 212, 71, .62);
+    transform: scale(1.85);
+    box-shadow: 0 0 0 34px rgba(255, 212, 71, 0), 0 0 110px rgba(255, 212, 71, .72);
   }
 
   58% {
     opacity: 0;
-    transform: scale(.72);
-    box-shadow: 0 0 0 28px rgba(239, 255, 255, 0), 0 0 22px rgba(255, 212, 71, .2);
+    transform: scale(.55);
+    box-shadow: 0 0 0 56px rgba(239, 255, 255, 0), 0 0 22px rgba(255, 212, 71, .2);
   }
 
   72% {
@@ -710,7 +710,7 @@ h1 {
 
   86% {
     opacity: 1;
-    transform: scale(1.04);
+    transform: scale(1.16);
   }
 
   100% {
