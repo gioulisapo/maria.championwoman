@@ -86,30 +86,6 @@ button {
   padding: clamp(22px, 5vw, 76px);
 }
 
-.top-champion {
-  position: fixed;
-  top: clamp(8px, 1.6vw, 22px);
-  left: 50%;
-  z-index: 5;
-  width: 100vw;
-  pointer-events: none;
-  text-align: center;
-  transform: translateX(-50%);
-}
-
-.top-champion span {
-  display: block;
-  color: rgba(239, 255, 255, .22);
-  font-family: "Bungee", Impact, Haettenschweiler, "Arial Black", sans-serif;
-  font-size: clamp(44px, 10.8vw, 172px);
-  font-weight: 400;
-  line-height: .86;
-  letter-spacing: 0;
-  text-transform: uppercase;
-  text-shadow: 5px 5px 0 rgba(255, 79, 154, .22), -4px -4px 0 rgba(69, 255, 232, .2);
-  white-space: nowrap;
-}
-
 .hero {
   min-height: calc(100vh - clamp(44px, 10vw, 152px));
   display: grid;
