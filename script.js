@@ -13,10 +13,10 @@ const spotlightClose = document.querySelector('.spotlight-close');
 
 let activeIndex = 0;
 let isPlaying = true;
-let soundEnabled = true;
+let soundEnabled = false;
 let sequenceTimer = 0;
 let soundFallbackHandled = false;
-let needsSoundNudge = false;
+let needsSoundNudge = true;
 
 function updateSoundNudge() {
   soundNudge.hidden = !needsSoundNudge || soundEnabled;

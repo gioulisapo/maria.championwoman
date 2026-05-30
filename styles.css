@@ -278,28 +278,28 @@ button {
 }
 
 .card-trophy {
-  left: 2%;
-  top: 7%;
+  left: -5%;
+  top: 3%;
   rotate: -11deg;
 }
 
 .card-gate {
-  right: 4%;
-  top: 6%;
+  right: -5%;
+  top: 3%;
   rotate: 9deg;
   animation-delay: -.7s;
 }
 
 .card-podium {
-  left: 0;
-  bottom: 10%;
+  left: -7%;
+  bottom: 4%;
   rotate: 8deg;
   animation-delay: -1.2s;
 }
 
 .card-walk {
-  right: 2%;
-  bottom: 6%;
+  right: -7%;
+  bottom: 3%;
   rotate: -8deg;
   animation-delay: -.3s;
 }
@@ -307,7 +307,7 @@ button {
 .hero-copy {
   position: relative;
   z-index: 12;
-  max-width: 520px;
+  max-width: 620px;
   justify-self: end;
 }
 
@@ -326,7 +326,7 @@ button {
 }
 
 h1 {
-  margin: 22px 0 0;
+  margin: 24px 0 0;
   font-size: clamp(42px, 6.4vw, 92px);
   line-height: .82;
   letter-spacing: 0;
@@ -409,10 +409,10 @@ h1 {
 }
 
 .champion-chant {
-  margin: 24px 0 0;
+  margin: 18px 0 0;
   border: 1px solid rgba(239, 255, 255, .22);
   border-radius: 18px;
-  padding: 16px;
+  padding: clamp(16px, 2.4vw, 28px);
   background: var(--glass);
   backdrop-filter: blur(18px);
   overflow: hidden;
@@ -433,9 +433,9 @@ h1 {
 }
 
 .champion-chant strong {
-  margin-top: 7px;
+  margin-top: 10px;
   color: var(--gold);
-  font-size: clamp(36px, 5.25vw, 78px);
+  font-size: clamp(48px, 7.2vw, 116px);
   white-space: nowrap;
   text-shadow: 4px 4px 0 rgba(255, 79, 154, .9), -3px -3px 0 rgba(69, 255, 232, .78);
 }
@@ -764,6 +764,26 @@ h1 {
     width: clamp(112px, 24vw, 172px);
   }
 
+  .card-trophy {
+    left: 0;
+    top: 0;
+  }
+
+  .card-gate {
+    right: 0;
+    top: 0;
+  }
+
+  .card-podium {
+    left: 0;
+    bottom: 1%;
+  }
+
+  .card-walk {
+    right: 0;
+    bottom: 1%;
+  }
+
 }
 
 @media (max-width: 620px) {
@@ -802,6 +822,6 @@ h1 {
   }
 
   .champion-chant strong {
-    font-size: clamp(30px, 9.4vw, 54px);
+    font-size: clamp(38px, 13vw, 72px);
   }
 }

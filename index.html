@@ -30,8 +30,8 @@
           <div class="lightning lightning-right" aria-hidden="true"></div>
 
           <button class="video-portal" type="button" aria-label="Play or pause Maria's victory video">
-            <video class="portal-video is-active" data-video="win" src="media/win.mp4" playsinline autoplay></video>
-            <video class="portal-video" data-video="interview" src="media/interview.mp4" playsinline></video>
+            <video class="portal-video is-active" data-video="win" src="media/win.mp4" muted playsinline autoplay></video>
+            <video class="portal-video" data-video="interview" src="media/interview.mp4" muted playsinline></video>
             <span class="scanline" aria-hidden="true"></span>
             <span class="play-glyph" aria-hidden="true"></span>
           </button>
@@ -56,20 +56,6 @@
 
         <div class="hero-copy">
           <p class="eyebrow">Maria Giouli / UltraOceanman Tabarca / First place</p>
-          <h1 id="hero-title">Championwoman Of The Open Sea</h1>
-          <p class="hero-lede">
-            Greek engineer. Relentless swimmer. Tabarca conqueror. This is Maria's aquatic arcade victory lap.
-          </p>
-
-          <div class="controls" aria-label="Video controls">
-            <button class="control-button primary" type="button" data-action="toggle-play">Pause video</button>
-            <button class="control-button" type="button" data-action="toggle-sound">Sound off</button>
-            <button class="control-button icon-button" type="button" data-action="celebrate" aria-label="Trigger celebration">#1</button>
-          </div>
-
-          <button class="sound-nudge" type="button" data-action="nudge-sound" hidden>
-            Turn on the sound. The sea is louder with Maria.
-          </button>
 
           <div class="champion-chant" aria-label="Championwoman chant">
             <span>A champion</span>
@@ -77,6 +63,21 @@
             <strong>A <span class="no-break">Championwoman</span></strong>
             <em>Half woman. Half dolphin. Fully first place.</em>
           </div>
+
+          <h1 id="hero-title">Championwoman Of The Open Sea</h1>
+          <p class="hero-lede">
+            Greek engineer. Relentless swimmer. Tabarca conqueror. This is Maria's aquatic arcade victory lap.
+          </p>
+
+          <div class="controls" aria-label="Video controls">
+            <button class="control-button primary" type="button" data-action="toggle-play">Pause video</button>
+            <button class="control-button needs-sound" type="button" data-action="toggle-sound">Sound on</button>
+            <button class="control-button icon-button" type="button" data-action="celebrate" aria-label="Trigger celebration">#1</button>
+          </div>
+
+          <button class="sound-nudge" type="button" data-action="nudge-sound">
+            Turn on the sound. The sea is louder with Maria.
+          </button>
         </div>
       </section>
     </main>
