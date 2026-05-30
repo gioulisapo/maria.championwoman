@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#021826">
+    <meta
+      name="description"
+      content="Championwoman of the Open Sea: an aquatic arcade celebration for Maria Giouli, first place at UltraOceanman Tabarca 2026."
+    >
+    <title>Maria Giouli | Championwoman of the Open Sea</title>
+    <link rel="preload" href="media/win.mp4" as="video" type="video/mp4">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <div class="ocean-grid" aria-hidden="true"></div>
+    <div class="wave-field" aria-hidden="true"></div>
+    <div class="dolphin dolphin-a" aria-hidden="true"></div>
+    <div class="dolphin dolphin-b" aria-hidden="true"></div>
+    <div class="dolphin dolphin-c" aria-hidden="true"></div>
+
+    <main id="main" class="page-shell">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="arena" aria-label="Championwoman video arena">
+          <div class="orbit orbit-one" aria-hidden="true"></div>
+          <div class="orbit orbit-two" aria-hidden="true"></div>
+          <div class="lightning lightning-left" aria-hidden="true"></div>
+          <div class="lightning lightning-right" aria-hidden="true"></div>
+
+          <button class="video-portal" type="button" aria-label="Play or pause Maria's victory video">
+            <video class="portal-video is-active" data-video="win" src="media/win.mp4" playsinline autoplay></video>
+            <video class="portal-video" data-video="interview" src="media/interview.mp4" playsinline></video>
+            <span class="scanline" aria-hidden="true"></span>
+            <span class="play-glyph" aria-hidden="true"></span>
+          </button>
+
+          <button class="photo-card card-trophy" type="button" data-title="Trophy close-up" data-image="media/win.jpg">
+            <img src="media/win.jpg" alt="Maria Giouli holding her first place trophy on the beach">
+            <span>Trophy close-up</span>
+          </button>
+          <button class="photo-card card-gate" type="button" data-title="Finish gate" data-image="media/win-2.jpg">
+            <img src="media/win-2.jpg" alt="Maria standing under the Oceanman Tabarca finish gate">
+            <span>Finish gate</span>
+          </button>
+          <button class="photo-card card-podium" type="button" data-title="Podium crown" data-image="media/win-4.jpg">
+            <img src="media/win-4.jpg" alt="Maria on the first place podium at UltraOceanman Tabarca">
+            <span>Podium crown</span>
+          </button>
+          <button class="photo-card card-walk" type="button" data-title="Victory walk" data-image="media/win-3.jpg">
+            <img src="media/win-3.jpg" alt="Maria walking with her UltraOceanman Tabarca winner board">
+            <span>Victory walk</span>
+          </button>
+        </div>
+
+        <div class="hero-copy">
+          <p class="eyebrow">Maria Giouli / UltraOceanman Tabarca / First place</p>
+          <h1 id="hero-title">Championwoman Of The Open Sea</h1>
+          <p class="hero-lede">
+            Greek engineer. Relentless swimmer. Tabarca conqueror. This is Maria's aquatic arcade victory lap.
+          </p>
+
+          <div class="controls" aria-label="Video controls">
+            <button class="control-button primary" type="button" data-action="toggle-play">Pause video</button>
+            <button class="control-button" type="button" data-action="toggle-sound">Sound off</button>
+            <button class="control-button icon-button" type="button" data-action="celebrate" aria-label="Trigger celebration">#1</button>
+          </div>
+
+          <div class="champion-chant" aria-label="Championwoman chant">
+            <span>A champion</span>
+            <span>A woman</span>
+            <strong>A <span class="no-break">Championwoman</span></strong>
+            <em>Half woman. Half dolphin. Fully first place.</em>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div class="spotlight" hidden>
+      <button class="spotlight-close" type="button" aria-label="Close image spotlight">Close</button>
+      <img alt="">
+      <p></p>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
