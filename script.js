@@ -212,6 +212,14 @@ function spawnAmbientBubbles() {
   popBubbles(originX, originY, 8 + Math.floor(Math.random() * 8));
 }
 
+function scheduleTravelingDolphin() {
+  const delay = 18000 + Math.random() * 22000;
+  window.setTimeout(() => {
+    spawnTravelingDolphin();
+    scheduleTravelingDolphin();
+  }, delay);
+}
+
 function popBubbles(x = window.innerWidth / 2, y = window.innerHeight / 2, count = 16) {
   for (let index = 0; index < count; index += 1) {
     const bubble = document.createElement('span');
@@ -346,7 +354,7 @@ photoCards.forEach(makeDraggable);
 showVideo(0);
 startVideos();
 updateSoundNudge();
-window.setTimeout(spawnTravelingDolphin, 1200);
-window.setInterval(spawnTravelingDolphin, 7600);
+window.setTimeout(spawnTravelingDolphin, 3500);
+scheduleTravelingDolphin();
 window.setTimeout(spawnAmbientBubbles, 900);
 window.setInterval(spawnAmbientBubbles, 2600);
