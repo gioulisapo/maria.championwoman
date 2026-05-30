@@ -546,37 +546,44 @@ h1 {
 .surface-dolphin {
   position: fixed;
   left: var(--surface-x);
-  bottom: -92px;
+  bottom: -120px;
   z-index: 18;
-  width: clamp(170px, 20vw, 290px);
-  height: clamp(74px, 9vw, 124px);
-  border-radius: 90% 70% 70% 90%;
-  background: linear-gradient(160deg, #efffff, #45ffe8 35%, #0d5984 78%);
-  box-shadow: 0 26px 44px rgba(0, 0, 0, .24), 0 0 70px rgba(69, 255, 232, .62);
+  width: clamp(190px, 22vw, 330px);
+  filter: drop-shadow(0 28px 34px rgba(0, 0, 0, .25)) drop-shadow(0 0 42px rgba(69, 255, 232, .5));
   pointer-events: none;
   transform: translateX(-50%) rotate(var(--surface-r));
-  animation: surfaceJump 3.8s cubic-bezier(.2, .82, .2, 1) forwards;
+  animation: surfaceJump 4.1s cubic-bezier(.2, .82, .2, 1) forwards;
 }
 
-.surface-dolphin::before {
-  content: "";
-  position: absolute;
-  right: -48px;
-  top: 23px;
-  border-left: 64px solid #2fb7e4;
-  border-top: 30px solid transparent;
-  border-bottom: 30px solid transparent;
+.surface-dolphin svg {
+  display: block;
+  width: 100%;
+  overflow: visible;
 }
 
-.surface-dolphin::after {
-  content: "";
-  position: absolute;
-  left: 44%;
-  top: -40px;
-  border-bottom: 68px solid #9af7ff;
-  border-left: 24px solid transparent;
-  border-right: 28px solid transparent;
-  transform: rotate(18deg);
+.dolphin-body,
+.dolphin-tail,
+.dolphin-fin,
+.dolphin-flipper {
+  fill: url("#dolphinPaint");
+}
+
+.surface-dolphin svg {
+  --dolphin-dark: #0d5984;
+}
+
+.dolphin-body,
+.dolphin-tail {
+  fill: #2fb7e4;
+}
+
+.dolphin-fin,
+.dolphin-flipper {
+  fill: #78eaff;
+}
+
+.dolphin-belly {
+  fill: rgba(239, 255, 255, .9);
 }
 
 .surface-splash {

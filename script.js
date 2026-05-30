@@ -199,6 +199,16 @@ function spawnSurfaceDolphin() {
   const splash = document.createElement('span');
   const surfaceX = `${18 + Math.random() * 64}vw`;
   dolphin.className = 'surface-dolphin';
+  dolphin.innerHTML = `
+    <svg viewBox="0 0 260 130" aria-hidden="true" focusable="false">
+      <path class="dolphin-tail" d="M220 60 C246 36 254 28 260 21 C255 49 246 66 229 77 C248 90 255 104 259 124 C247 117 232 105 216 86 Z"></path>
+      <path class="dolphin-body" d="M17 78 C43 33 104 10 163 25 C194 33 220 50 236 72 C202 76 173 88 143 104 C99 128 49 117 17 78 Z"></path>
+      <path class="dolphin-belly" d="M47 82 C89 102 137 99 183 75 C151 111 91 125 47 82 Z"></path>
+      <path class="dolphin-fin" d="M124 56 C139 28 154 17 174 13 C164 36 151 50 130 65 Z"></path>
+      <path class="dolphin-flipper" d="M126 86 C143 97 155 111 162 127 C137 121 121 109 112 91 Z"></path>
+      <circle cx="66" cy="61" r="5"></circle>
+    </svg>
+  `;
   splash.className = 'surface-splash';
   dolphin.style.setProperty('--surface-x', surfaceX);
   splash.style.setProperty('--surface-x', surfaceX);
@@ -206,6 +216,13 @@ function spawnSurfaceDolphin() {
   document.body.append(splash, dolphin);
   dolphin.addEventListener('animationend', () => dolphin.remove(), { once: true });
   splash.addEventListener('animationend', () => splash.remove(), { once: true });
+}
+
+function spawnAmbientBubbles() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const originX = window.innerWidth * (.08 + Math.random() * .84);
+  const originY = window.innerHeight + 40;
+  popBubbles(originX, originY, 8 + Math.floor(Math.random() * 8));
 }
 
 function popBubbles(x = window.innerWidth / 2, y = window.innerHeight / 2, count = 16) {
@@ -343,4 +360,6 @@ showVideo(0);
 startVideos();
 updateSoundNudge();
 window.setTimeout(spawnSurfaceDolphin, 1400);
-window.setInterval(spawnSurfaceDolphin, 5500);
+window.setInterval(spawnSurfaceDolphin, 7200);
+window.setTimeout(spawnAmbientBubbles, 900);
+window.setInterval(spawnAmbientBubbles, 2600);
