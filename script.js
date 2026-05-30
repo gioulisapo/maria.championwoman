@@ -20,6 +20,7 @@ let needsSoundNudge = false;
 
 function updateSoundNudge() {
   soundNudge.hidden = !needsSoundNudge || soundEnabled;
+  soundButton.classList.toggle('needs-sound', !soundEnabled);
 }
 
 function setPointerLight(event) {
@@ -105,11 +106,16 @@ function toggleSound() {
 function spawnSurfaceDolphin() {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   const dolphin = document.createElement('span');
+  const splash = document.createElement('span');
+  const surfaceX = `${18 + Math.random() * 64}vw`;
   dolphin.className = 'surface-dolphin';
-  dolphin.style.setProperty('--surface-x', `${18 + Math.random() * 64}vw`);
+  splash.className = 'surface-splash';
+  dolphin.style.setProperty('--surface-x', surfaceX);
+  splash.style.setProperty('--surface-x', surfaceX);
   dolphin.style.setProperty('--surface-r', `${Math.random() > .5 ? 12 : -12}deg`);
-  document.body.append(dolphin);
+  document.body.append(splash, dolphin);
   dolphin.addEventListener('animationend', () => dolphin.remove(), { once: true });
+  splash.addEventListener('animationend', () => splash.remove(), { once: true });
 }
 
 function popBubbles(x = window.innerWidth / 2, y = window.innerHeight / 2, count = 16) {
@@ -247,4 +253,5 @@ photoCards.forEach(makeDraggable);
 showVideo(0);
 startVideos();
 updateSoundNudge();
-window.setInterval(spawnSurfaceDolphin, 9000);
+window.setTimeout(spawnSurfaceDolphin, 1400);
+window.setInterval(spawnSurfaceDolphin, 5500);
