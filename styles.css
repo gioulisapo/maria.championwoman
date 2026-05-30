@@ -434,28 +434,6 @@ h1 {
   background: var(--gold);
 }
 
-.sound-nudge {
-  display: block;
-  width: 100%;
-  margin-top: 14px;
-  border: 2px solid rgba(255, 212, 71, .72);
-  border-radius: 18px;
-  padding: 12px 14px;
-  color: var(--ink);
-  background: linear-gradient(135deg, var(--gold), var(--lime));
-  box-shadow: 0 0 44px rgba(255, 212, 71, .36);
-  cursor: pointer;
-  font-weight: 1000;
-  line-height: 1.1;
-  text-align: left;
-  text-transform: uppercase;
-  transform-origin: center;
-}
-
-.sound-nudge[hidden] {
-  display: none;
-}
-
 .champion-chant {
   margin: 18px 0 0;
   border: 1px solid rgba(239, 255, 255, .22);

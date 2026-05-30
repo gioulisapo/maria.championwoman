@@ -3,7 +3,6 @@ const portal = document.querySelector('.video-portal');
 const videos = [...document.querySelectorAll('.portal-video')];
 const playButton = document.querySelector('[data-action="toggle-play"]');
 const soundButton = document.querySelector('[data-action="toggle-sound"]');
-const soundNudge = document.querySelector('[data-action="nudge-sound"]');
 const celebrateButton = document.querySelector('[data-action="celebrate"]');
 const photoCards = [...document.querySelectorAll('.photo-card')];
 const spotlight = document.querySelector('.spotlight');
@@ -110,7 +109,6 @@ function syncSoundBalloon() {
 }
 
 function updateSoundNudge() {
-  soundNudge.hidden = !needsSoundNudge || soundEnabled;
   soundButton.classList.toggle('needs-sound', !soundEnabled);
   syncSoundBalloon();
 }
@@ -312,7 +310,6 @@ playButton.addEventListener('click', () => {
 });
 
 soundButton.addEventListener('click', toggleSound);
-soundNudge.addEventListener('click', toggleSound);
 celebrateButton.addEventListener('click', (event) => celebrate(event.clientX, event.clientY));
 spotlightClose.addEventListener('click', closeSpotlight);
 spotlight.addEventListener('click', (event) => {
