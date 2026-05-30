@@ -17,10 +17,102 @@ let soundEnabled = false;
 let sequenceTimer = 0;
 let soundFallbackHandled = false;
 let needsSoundNudge = true;
+let soundBalloonTimeline = null;
+
+function buildSoundBalloon() {
+  if (!window.gsap || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return null;
+
+  window.gsap.set(soundButton, {
+    transformOrigin: '50% 55%',
+    scale: .84,
+    opacity: 1,
+    borderRadius: '50%',
+  });
+
+  return window.gsap.timeline({ repeat: -1, repeatDelay: .18 })
+    .to(soundButton, {
+      scaleX: 1.08,
+      scaleY: 1.18,
+      rotation: -2,
+      borderRadius: '48% 52% 54% 46%',
+      duration: .32,
+      ease: 'sine.out',
+    })
+    .to(soundButton, {
+      scaleX: 1.42,
+      scaleY: 1.58,
+      rotation: 2,
+      borderRadius: '55% 45% 50% 50%',
+      duration: .34,
+      ease: 'sine.out',
+    })
+    .to(soundButton, {
+      scaleX: 1.82,
+      scaleY: 2.08,
+      rotation: -1,
+      borderRadius: '46% 54% 58% 42%',
+      duration: .34,
+      ease: 'power1.out',
+    })
+    .to(soundButton, {
+      scaleX: 2.35,
+      scaleY: 2.75,
+      rotation: 1,
+      borderRadius: '60% 40% 48% 52%',
+      duration: .28,
+      ease: 'power1.in',
+    })
+    .to(soundButton, {
+      scaleX: .18,
+      scaleY: .08,
+      opacity: .15,
+      rotation: -8,
+      borderRadius: '50%',
+      duration: .07,
+      ease: 'power4.in',
+    })
+    .to(soundButton, {
+      scaleX: 1.12,
+      scaleY: .82,
+      opacity: 1,
+      rotation: 4,
+      duration: .16,
+      ease: 'back.out(3)',
+    })
+    .to(soundButton, {
+      scaleX: .84,
+      scaleY: .84,
+      rotation: 0,
+      duration: .18,
+      ease: 'elastic.out(1, .45)',
+    });
+}
+
+function syncSoundBalloon() {
+  if (!soundButton.classList.contains('needs-sound')) {
+    if (soundBalloonTimeline) {
+      soundBalloonTimeline.kill();
+      soundBalloonTimeline = null;
+    }
+    if (window.gsap) {
+      window.gsap.set(soundButton, { clearProps: 'transform,opacity,borderRadius' });
+    } else {
+      soundButton.style.transform = '';
+      soundButton.style.opacity = '';
+      soundButton.style.borderRadius = '';
+    }
+    return;
+  }
+
+  if (!soundBalloonTimeline) {
+    soundBalloonTimeline = buildSoundBalloon();
+  }
+}
 
 function updateSoundNudge() {
   soundNudge.hidden = !needsSoundNudge || soundEnabled;
   soundButton.classList.toggle('needs-sound', !soundEnabled);
+  syncSoundBalloon();
 }
 
 function setPointerLight(event) {
